@@ -5,32 +5,55 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>Pagina Inicial</title>
+        <title>iFrames</title>
         <meta charset="UTF-8"/>
+        <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
+
         <header>
             <nav>
-                <a href="/">Tech Shop</a> 
-                <ul>
-                    <li><a href="/ejemplo2">Mis Autos</a></li>
-                    <li><a href="/multimedia">Multimedias</a></li>
-                    <li><a href="/iframes">iFrames</a></li>
+                <a class="logo nav-link" href="/">Tech Shop</a> 
+                <ul class="nav-menu">
+                    <li><a class="nav-link" href="/ejemplo2">Mis Autos</a></li>
+                    <li><a class="nav-link" href="/multimedia">Multimedias</a></li>
+                    <li><a class="nav-link" href="/iframes">iFrames</a></li>
                 </ul>
             </nav>
         </header>
-        
+
         <aside>
-            <h1>Techshop</h1>
-            <p>En esta tienda hay ritas todas las semanas...<p>
+            <h1>Multimedia</h1>
+            <p>Mostramos el uso de archivos multimedia en una pagina...<p>
         </aside>
-        
+
         <section>           
-            <h2>Esta va a ser la pagina de testing</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>   
+            <h2>iFrames</h2>
+            <article>
+                <h3>Sitio Empotrado</h3>
+                
+                <iframe src="https://ufidelitas.ac.cr/" 
+                    width="800"
+                        height="500">
+                    
+                </iframe>
+            </article>
+
+            <article>
+                <h3>Sitio Youtube</h3>
+                                <iframe width="910" height="512" src="https://www.youtube.com/embed/yScNIsLTLYA" title="🏊POCOYÓ en ESPAÑOL - Juega y Bucea en la Piscina [121 min] CARICATURAS y DIBUJOS ANIMADOS para niños" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                
+
+            </article>
+
+            <article>
+                <h3>Sitio Ubicanos</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2082.4228930545364!2d-84.31311080843341!3d9.842750801258942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa1ab0067003b89%3A0x5e8623251b8f64c9!2sTaller%20negra!5e0!3m2!1sen!2scr!4v1747878752081!5m2!1sen!2scr" width="600" height="450" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </article>
+
+
         </section>
-        
+
         <footer>
             TechShop 2025 &COPY; Todos los Derechos Reservados
         </footer>
