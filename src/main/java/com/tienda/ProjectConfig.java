@@ -3,10 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.tienda;
+
+import java.util.Locale;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
@@ -14,8 +20,8 @@ import org.thymeleaf.templatemode.TemplateMode;
 //Sin esta Spring no ejecutara adecuadamente
 @Configuration
 
-public class ProjectConfig implements WebMvcConfigurer{
-    
+public class ProjectConfig implements WebMvcConfigurer {
+
     /* Los siguiente métodos son para implementar el tema de seguridad dentro del proyecto */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -24,6 +30,7 @@ public class ProjectConfig implements WebMvcConfigurer{
         registry.addViewController("/multimedia").setViewName("multimedia");
         registry.addViewController("/iframes").setViewName("iframes");
     }
+
     /* El siguiente método se utilizar para publicar en la nube, independientemente  */
     @Bean
     public SpringResourceTemplateResolver templateResolver_0() {
@@ -35,6 +42,26 @@ public class ProjectConfig implements WebMvcConfigurer{
         resolver.setCheckExistence(true);
         return resolver;
     }
+
+    /*Habilitar Poppers*/
+    @Bean
+    public LocaleResolver localeResolver() {
+        var slr = new SessionLocaleResolver();
+        slr.setDefaultLocale(Locale.getDefault());
+        slr.setLocaleAttributeName("Session.current.timezone");
+        slr.setTimeZoneAttributeName("session.current.locale");
+        return slr;
+    }
+
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        var lci = new LocaleChangeInterceptor();
+        lci.setParamName("lang");
+        return lci;
+    }
+    
+    @Override
+    public void addInterceptors(InterceptorRegistry registro){
+        registro.addInterceptor(localeChangeInterceptor());
+    }
 }
-
-
