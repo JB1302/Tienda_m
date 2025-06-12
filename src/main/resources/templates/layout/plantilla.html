@@ -21,10 +21,11 @@
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
+        <script th:src="@{/js/rutinas.js}"></script>
     </head>
     <body>
 
-<header th:fragment="header" class="header">
+        <header th:fragment="header" class="header">
             <nav class="navbar navbar-expand-sm p-0">
                 <div class="container">                    
                     <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
