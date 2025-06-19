@@ -1,0 +1,67 @@
+
+Recorte004 fragmentos.html (botones del listado)
+==========
+
+
+
+Recorte005 rutinas.js (pasa parámetros al modal)
+==========
+
+
+
+Recorte006 fragmentos.html (verificación)
+==========
+
+ 
+
+Recorte006 layout.html (Toast)
+==========
+
+
+Recorte007 rutinas.js (limpiar Toas)
+==========
+
+<script>
+
+</script>
+
+
+Recorte008 CategoriaController (método eliminar)
+==========
+
+    @Autowired
+    private MessageSource messageSource;
+
+    @GetMapping("/eliminar")
+    public String eliminar(Categoria categoria,
+            RedirectAttributes redirectAttrs) {
+        categoria = categoriaService.getCategoria(categoria);
+
+        if (categoria == null) {
+            redirectAttrs.addFlashAttribute("error", messageSource.getMessage("categoria.error01",null, Locale.getDefault()));
+        } else if (false) {
+            redirectAttrs.addFlashAttribute("error", messageSource.getMessage("categoria.error02",null, Locale.getDefault()));
+        } else if (categoriaService.delete(categoria)) {
+            redirectAttrs.addFlashAttribute("todoOk", messageSource.getMessage("categoria.eliminado",null, Locale.getDefault()));
+        } else {
+            redirectAttrs.addFlashAttribute("error", messageSource.getMessage("categoria.error03",null, Locale.getDefault()));
+        }
+        return "redirect:/categoria/listado";
+
+        /* va en lugar del false... categoria.getProductos() != null && !categoria.getProductos().isEmpty()*/
+    }
+
+
+Recorte009 listado.html (ajustes)
+==========
+
+<body>
+        <header th:replace="~{layout/plantilla :: header}"/>        
+        
+        <section th:replace="~{categoria/fragmentos :: agregarCategoria}"/>        
+        <section th:replace="~{categoria/fragmentos :: listado}"/>
+        <section th:replace="~{categoria/fragmentos :: confirmarEliminar}"/>
+        <section th:replace="~{layout/plantilla :: mostrarToast}"/>
+        
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
