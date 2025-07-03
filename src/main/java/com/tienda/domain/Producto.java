@@ -26,7 +26,7 @@ public class Producto implements Serializable { //Se deben poder serializar
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //La identidad define Valor
     private long idProducto; //El ID va a ir sin valor, la base de datos
-    private long id_Categoria; //El ID va a ir sin valor, la base de datos
+    //private long id_Categoria; //El ID va a ir sin valor, la base de datos
 
     //Va a ser la que genere el auto incremento
     private String descripcion;
@@ -36,4 +36,9 @@ public class Producto implements Serializable { //Se deben poder serializar
  
     private String rutaImagen;
     private boolean activo; //Definir si Una categoria esta activa o inactiva
+    
+    //Relacion en la base de datos
+    @ManyToOne
+    @JoinColumn(name="id_categoria")
+    private Categoria categoria;
 }
