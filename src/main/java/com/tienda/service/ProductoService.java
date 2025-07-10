@@ -49,6 +49,7 @@ public class ProductoService {
         productoRepository.save(producto);
     }
 
+
     //Borrar Registros
     @Transactional
     public boolean delete(Producto producto) {
@@ -65,4 +66,22 @@ public class ProductoService {
             return false;
         }
     }
+
+            
+     @Transactional(readOnly = true)
+    public List<Producto> consultaAmpliada(double precioInf,double PrecioSup){
+         return productoRepository.findByPrecioBetweenOrderByPrecio(precioInf, PrecioSup);
+     }
+    
+     @Transactional(readOnly = true)
+    public List<Producto> consultaJPQL(double precioInf,double PrecioSup){
+         return productoRepository.consultaJPQL(precioInf, PrecioSup);
+     }
+    
+     @Transactional(readOnly = true)
+    public List<Producto> consultaSQL(double precioInf,double PrecioSup){
+         return productoRepository.consultaSQL(precioInf, PrecioSup);
+     }
 }
+
+
