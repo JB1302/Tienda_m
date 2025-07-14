@@ -82,6 +82,13 @@ public class ProductoService {
     public List<Producto> consultaSQL(double precioInf,double PrecioSup){
          return productoRepository.consultaSQL(precioInf, PrecioSup);
      }
+    
+    
+    //Query para encontrar por nombre.
+    @Transactional(readOnly = true)
+    public List <Producto> encontrarPorNombre(String descripcion){
+        return productoRepository.encontrarPorNombre("%" + descripcion + "%");
+    }
 }
 
 

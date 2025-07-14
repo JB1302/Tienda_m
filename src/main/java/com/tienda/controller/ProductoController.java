@@ -117,4 +117,22 @@ public class ProductoController {
         return "/producto/modifica";
     }
 
+    //Query para encontrar por nombre.
+    @GetMapping("/listado3")
+    public String listado3(Model model) {
+        var lista = productoService.getProductos(false); // Todos los productos, o vacía si prefieres
+        model.addAttribute("productos", lista);
+        return "/producto/listado3";
+    }
+
+    @PostMapping("/query3")
+    public String query3(
+            @RequestParam String descripcion,
+            Model model) {
+        var productos = productoService.encontrarPorNombre(descripcion);
+        model.addAttribute("productos", productos);
+        model.addAttribute("descripcion", descripcion);
+        return "/producto/listado3";
+    }
+
 }

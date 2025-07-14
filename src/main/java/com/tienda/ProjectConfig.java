@@ -90,8 +90,8 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/categoria/modificar/**", "/categoria/eliminar/**",
                         "/usuario/nuevo", "/usuario/guardar",
                         "/usuario/modificar/**", "/usuario/eliminar/**",
-                        "/reportes/**"
-                        
+                        "/reportes/**",
+                        "/producto/query3"
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/producto/listado",
@@ -99,13 +99,12 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/usuario/listado"
                 ).hasAnyRole("ADMIN", "VENDEDOR")
                 .requestMatchers("/facturar/carrito")
-                        
                 .hasRole("USER")
                 )
                 .formLogin((form) -> form
                 .loginPage("/login").permitAll())
                 .logout((logout) -> logout.permitAll());
-        
+
         return http.build();
     }
 

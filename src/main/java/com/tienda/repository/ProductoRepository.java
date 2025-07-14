@@ -33,5 +33,11 @@ public interface ProductoRepository
     public List<Producto> consultaSQL(double precioInf, double precioSup);
     
     
+    
+    //Query para encontrar por nombre.
+    @Query(nativeQuery = true,
+            value="SELECT * FROM producto d WHERE d.descripcion like ?1 ORDER BY d.descripcion")
+    public List<Producto> encontrarPorNombre(String descripcion);
+    
 
 }
