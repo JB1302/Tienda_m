@@ -13,7 +13,7 @@
 
             <div class="row py-4 mb-2 bg-light">
                 <div class="col-md-1"></div>
-                <div class="col-md-3">
+                <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
                     <button type="button" 
                             class="btn btn-primary"
                             data-bs-toggle="modal"
@@ -31,7 +31,9 @@
                     <div class="modal-content">
                         <div class="modal-header bg-primary text-white">
                             <h1 class="modal-title fs-5 " id="labelModal"><i class="fa-solid fa-database"></i>  [[#{categoria.agregar}]]</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" 
+                                    class="btn-close" data-bs-dismiss="modal" 
+                                    aria-label="Close" ></button>
                         </div>
                         <form th:action="@{/categoria/guardar}"
                               th:object="${cateogria}"
@@ -88,7 +90,7 @@
                                             <th>[[#{categoria.descripcion}]]</th>
                                             <th>[[#{categoria.imagen}]]</th>
                                             <th>[[#{categoria.activo}]]</th>
-                                            <th></th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -98,10 +100,10 @@
                                             <td><img th:src="@{${c.rutaImagen}}" alt="noData" height="75"/></td>
                                             <td th:text="${c.activo} ? 'Activa':'Inactiva'"></td>
                                             <td>
-                                                <a class="btn btn-danger" th:href="@{/categoria/eliminar/}+${c.idCategoria}">
+                                                <a class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/categoria/eliminar/}+${c.idCategoria} ">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                                                 </a>
-                                                <a class="btn btn-success" th:href="@{/categoria/modificar/}+${c.idCategoria}">
+                                                <a class="btn btn-success" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/categoria/modificar/}+${c.idCategoria}">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]
                                                 </a>
                                             </td>

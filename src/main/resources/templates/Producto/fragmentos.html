@@ -18,6 +18,7 @@
                             class="btn btn-primary"
                             data-bs-toggle="modal"
                             data-bs-target="#agregarProducto"
+                            sec:authorize="hasRole('ROLE_ADMIN')"
                             ><i class="fa-solid fa-plus"></i> [[#{producto.agregar}]]
                     </button>
                 </div>
@@ -133,7 +134,7 @@
                                             <th>[[#{producto.categoria}]]</th>
                                             <th>[[#{producto.imagen}]]</th>
                                             <th>[[#{producto.activo}]]</th>
-                                            <th></th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -155,6 +156,7 @@
                                                 <div class="d-flex align-items-start">                                                    
                                                     <button type="button"
                                                             class="btn btn-danger"
+                                                            sec:authorize="hasRole('ROLE_ADMIN')"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#confirmModal"
                                                             th:data-bs-id="${p.idProducto}"
@@ -166,6 +168,7 @@
                                                           method="post">
                                                         <input type="hidden" name="idProducto" th:value="${p.idProducto}"/>
                                                         <button type="submit"
+                                                                sec:authorize="hasRole('ROLE_ADMIN')"
                                                                 class="btn btn-success">
                                                             <i class="fa-solid fa-pencil"></i> [[#{accion.actualizar}]]
                                                         </button>
