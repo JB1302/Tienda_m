@@ -11,9 +11,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author jstev
  */
-public interface UsuarioRepository 
-        extends JpaRepository<Usuario, Long>{
+public interface UsuarioRepository
+        extends JpaRepository<Usuario, Long> {
+
     public Usuario findByUsername(String username);
-    
-    
+
+    //Consulta Ampleada - Se usa para activar un usuario desde el correo enviado
+    public Usuario findByUsernameAndPassword(String username, String Password);
+
+    public Usuario findByUsernameOrCorreo(String username, String correo);
+
+    //Consulta Ampleada - Se usa para validar si un "username" o "correo" han
+    //sido utilizados por otro usuario
+    public boolean existsByUsernameOrCorreo(String username, String correo);
 }
