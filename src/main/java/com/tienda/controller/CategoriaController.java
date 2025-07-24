@@ -30,7 +30,7 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @GetMapping("/listad") //Establecer la vista de Listado    
+    @GetMapping("/listado") //Establecer la vista de Listado    
     //De momento el metodo ejecutaria en .../categoria/listado
     public String listado(Model model) {
         var lista = categoriaService.getCategorias(false);
