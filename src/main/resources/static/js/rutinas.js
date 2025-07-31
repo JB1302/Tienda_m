@@ -1,3 +1,20 @@
+function addCart(formulario){
+    //Posicion 0 del formulario
+    var idProducto = formulario.elements[0].value;
+    //Posicion 1 del formulario
+    var existencias = formulario.elements[1].value;
+    
+    if(existencias > 0){
+        var ruta = "/carrito/agregar/"+ idProducto;
+        $("#resultBlock").load(ruta);
+    }else{
+        alert("No hay existencias....");
+    }
+    
+    
+
+}
+
 function muestraImagen(input) {
     //Si hay un archivo
     if (input.files && input.files[0]) {
