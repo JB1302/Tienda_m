@@ -6,6 +6,7 @@ package com.tienda.controller;
 
 import com.tienda.domain.Item;
 import com.tienda.domain.Producto;
+import com.tienda.service.ConstanteService;
 import com.tienda.service.ItemService;
 import com.tienda.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +29,22 @@ public class CarritoController {
     @Autowired
     private ProductoService productoService;
 
+    @Autowired
+    private ConstanteService constanteService;
+
     @GetMapping("/carrito/listado") //Establecer la vista de Listado    
     //De momento el metodo ejecutaria en .../carrito/listado
     public String listado(Model model) {
         var lista = itemService.getItems();
 
         model.addAttribute("listaItems", lista);
-        model.addAttribute("carritoTotal", itemService.getTotal());
+        var carritoTotal = itemService.getTotal();
+        model.addAttribute("carritoTotal", carritoTotal);
+
+        double tCambio = Double.parseDouble(constanteService.getConstantePorAtributo("dolar").getValor());
+
+        model.addAttribute("totalDolares", (double) (Math.round(carritoTotal / tCambio * 100)) / 100);
+        model.addAttribute("precioVenta", tCambio);
         return "/carrito/listado";
     }
 
@@ -80,9 +90,9 @@ public class CarritoController {
 
         return new ModelAndView("/carrito/fragmentos :: verCarrito");
     }
-    
+
     @GetMapping("/facturar/carrito")
-    public String facturarCarrito(){
+    public String facturarCarrito() {
         itemService.facturar();
         return "redirect:/";
     }
