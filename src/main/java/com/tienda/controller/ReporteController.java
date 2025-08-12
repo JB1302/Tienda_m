@@ -24,9 +24,8 @@ public class ReporteController {
     @GetMapping("/principal")
     public String listado(Model model) {
         Calendar fecha = Calendar.getInstance();
-        
+
         //Definir periodos de fechas
-        
         //Toma el año actual y resta 1, y lo define en el primero de enero
         String fechaIni = "" + (fecha.get(Calendar.YEAR) - 1) + "-01-01";
 
@@ -58,6 +57,7 @@ public class ReporteController {
             throws IOException {
         return reporteService.generaReporte("ventas", null, tipo);
     }
+
     /* Ventas con parametros
     @GetMapping("/ventasTotales")
     public ResponseEntity<Resource> reporteVentasTotales(
@@ -71,11 +71,16 @@ public class ReporteController {
         parametros.put("fechaFinal", fechaFin);
         return reporteService.generaReporte("ventasTotales", parametros, tipo);
         
-        */
-        @GetMapping("/ventasTotales")
+     */
+    @GetMapping("/ventasTotales")
     public ResponseEntity<Resource> reporteVentasTotales(@RequestParam String tipo)
             throws IOException {
         return reporteService.generaReporte("ventasTotales", null, tipo);
+    }
+
+    @GetMapping("/facturasEmitidas")
+    public ResponseEntity<Resource> facturasEmitidas(@RequestParam String tipo) throws IOException {
+        return reporteService.generaReporte("facturasEmitidas", null, tipo);
     }
 
 }

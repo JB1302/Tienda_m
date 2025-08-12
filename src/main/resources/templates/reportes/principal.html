@@ -52,7 +52,35 @@
                             <i class='fas fa-download'></i><i class='fas fa-file-csv'></i>
                         </a>
                     </div>
-                </div>                
+                </div>           
+
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            Facturas emitidas
+                        </div>
+                        <div class="card-body">
+                            <a th:href="@{/reportes/facturasEmitidas(tipo='vPdf')}" class="btn btn-primary me-2">
+                                <i class="fas fa-eye"></i> <i class="fas fa-file-pdf"></i>
+                            </a>
+                            <a th:href="@{/reportes/facturasEmitidas(tipo='Pdf')}" class="btn btn-success me-2">
+                                <i class="fas fa-download"></i> <i class="fas fa-file-pdf"></i>
+                            </a>
+                            <a th:href="@{/reportes/facturasEmitidas(tipo='Xls')}" class="btn btn-warning me-2">
+                                <i class="fas fa-download"></i> <i class="fas fa-file-excel"></i>
+                            </a>
+                            <a th:href="@{/reportes/facturasEmitidas(tipo='Csv')}" class="btn btn-danger">
+                                <i class="fas fa-download"></i> <i class="fas fa-file-csv"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
                 <div class="card">
                     <div class="card-header text-center">
                         Ventas totales
