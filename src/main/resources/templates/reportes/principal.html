@@ -17,7 +17,7 @@
             <div class="row row-cols-3">
                 <div class="card">
                     <div class="card-header text-center">
-                        Reporte Cientes
+                        Ventas
                     </div>
                     <div class="card-body">
                         <a th:href="@{/reportes/usuarios?tipo=vPdf}" class="btn btn-primary">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header text-center">
-                        Reporte ventas
+                        Categorias
                     </div>
                     <div class="card-body">
                         <a th:href="@{/reportes/ventas?tipo=vPdf}" class="btn btn-primary">
@@ -76,9 +76,66 @@
                         </div>
                     </div>
                 </div>
+                
+                
+                
+                
+                
+
+                <div class="card">
+                    <div class="card-header text-center">
+                        Ventas totales
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h4>Inventario</h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="GET"
+                                  th:action="@{/reportes/facturas}" 
+                                  class="was-validated">
+
+                               
+                                <div class="mb-3">
+                                    <label for="facturas">IdCategoria</label>
+                                    <input type="text" class="form-control" 
+                                           name="idCategoria"
+                                           th:value="${idCategoria}"
+                                           required="true"/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 d-grid">
+                                        <button name="tipo" value="vPdf" type="submit" class="btn btn-primary">
+                                            <i class='fas fa-eye'></i><i class='fas fa-file-pdf'></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 d-grid">    
+                                        <button name="tipo" value="Pdf" type="submit" class="btn btn-success">
+                                            <i class='fas fa-download'></i><i class='fas fa-file-pdf'></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 d-grid">    
+                                        <button name="tipo" value="Xls" type="submit" class="btn btn-warning">
+                                            <i class='fas fa-download'></i><i class='fas fa-file-excel'></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 d-grid">    
+                                        <button name="tipo" value="Xls" type="submit" class="btn btn-danger">
+                                            <i class='fas fa-download'></i><i class='fas fa-file-csv'></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
 
 
+                
+                
+                
+                
 
 
                 <div class="card">

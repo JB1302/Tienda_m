@@ -83,4 +83,17 @@ public class ReporteController {
         return reporteService.generaReporte("facturasEmitidas", null, tipo);
     }
 
+
+
+    @GetMapping("/facturas")
+    public ResponseEntity<Resource> verFacturas(
+            @RequestParam String tipo,
+            @RequestParam String idCategoria)
+            throws IOException {
+        @SuppressWarnings("unchecked")
+        Map<String, Object> parametros = new HashMap();
+        parametros.put("idCategoria", idCategoria);
+        return reporteService.generaReporte("inventario", parametros, tipo);
+    }
+
 }
